@@ -1,10 +1,9 @@
 /* ------------------------------------------------------------------------------------------------
    Macro Dials — theme overrides for Material for MkDocs.
    Palette: "paper" (light) and "ink" (dark) built on Material's default/slate schemes so every derived
-   colour (code, admonitions, tables, search) stays consistent. Type: IBM Plex Sans for headings and
-   navigation, Source Serif 4 for reading, IBM Plex Mono for code and figures.
+   colour (code, admonitions, tables, search) stays consistent. Type: IBM Plex Sans throughout (loaded by
+   the theme), IBM Plex Mono for code and figures.
    ------------------------------------------------------------------------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 /* ---------- colour: light ("paper") ---------- */
 [data-md-color-scheme="default"] {
@@ -71,7 +70,8 @@
 .md-typeset h1::after {
   content: ""; display: block; width: 3.5rem; height: 3px; margin-top: 0.6rem; background: var(--mdl-amber); border-radius: 2px;
 }
-.md-typeset { font-size: 0.85rem; line-height: 1.65; }
+.md-typeset { font-size: 0.82rem; line-height: 1.65; }
+.md-typeset p { letter-spacing: 0.002em; }
 .md-typeset code, .md-typeset pre, .md-typeset table:not([class]) td.num, .md-typeset kbd {
   font-variant-numeric: tabular-nums;
 }
