@@ -104,7 +104,7 @@ STATIC["balance-sheets"] = [
     ["Third-quarter revenue", "$14.6B (+161% y/y)", "$28.05B (flat y/y)", "$42.7B"],
     ["Third-quarter operating income", "$2.8B (adj. EBITDA $8.8B)", "$0.72B (2.6% margin, −56% y/y)", "$3.5B"],
     ["Third-quarter capex", "$19.6B", "$4.73B (nine months $13.0B)", "$24.3B"],
-    ["Capex guidance", "Q4-26: $35–40B", "2026: \"more than $25 billion\" — at least ~$12B still to come in Q4", "Q4-26: ~$47–52B"],
+    ["Capex guidance", "Q4-26: $35–40B", "2026: cut in the 10-Q to \"in excess of $20 billion\" from the \"more than $25 billion\" held since April — about $7B still to come in Q4", "Q4-26: ~$42–47B"],
     ["Free cash flow", "Negative through the build; self-funding claimed from 1H27", "$1.53B in Q3 (about −$1B underlying after working-capital timing, per Electrek's reading)", "—"],
     ["Shares outstanding", "13.58B (Sept 30)", "3.95B (Oct 15)", "Exchange ratio unknown"],
     ["Market capitalization, Nov 2 close", "$1.87T at $137.40", "$1.60T at $403.82", "$3.46T — SpaceX 54%, Tesla 46%"],
@@ -117,7 +117,7 @@ STATIC["versions"] = [
     ["The bull's sheet (Maguire 1.0)", "SpaceX, plus orbital compute and a chip fab as revenue lines. Tesla absent", "SpaceX plus $31B of orbital revenue and fab revenue in 2028", "SpaceX's, with no capex for orbital or the fab", "Reference columns on Summary and Valuation; the Bridge sheet"],
     ["Model 2.0 (scenarios 2–4)", "SpaceX as reported, with Terafab and Starmind as capex programs. Tesla absent", "SpaceX's three segments; no Tesla revenue", "SpaceX's, with leases, prepayments, debt and equity in the bridge", "Compute, Starlink, Launch, Consolidated"],
     ["Model 2.0 with the Tesla toggle on", "As above, plus Tesla's liquidity as a funding source", "Unchanged — no Tesla revenue", "Adds ~$75B of Tesla cash and lines to the bridge; no Tesla capex, debt or shares", "Assumptions › Combination toggle; Consolidated › Tesla pool"],
-    ["A combined SpaceX–Tesla company (the article's thesis)", "Both companies, with eliminations", "Adds Tesla's ~$112B run-rate at a 2–3% operating margin, and the robotaxi program", "Adds $45B cash, $30B of lines, $9.5B debt, >$25B a year of capex, and 3.95B shares at an exchange ratio the special committees would set", "Not modeled — see the page for what a full version needs"],
+    ["A combined SpaceX–Tesla company (the article's thesis)", "Both companies, with eliminations", "Adds Tesla's ~$112B run-rate at a 2–3% operating margin, and the robotaxi program", "Adds $45B cash, $30B of lines, $9.5B debt, $20B-plus a year of capex, and 3.95B shares at an exchange ratio the special committees would set", "Not modeled — see the page for what a full version needs"],
 ]
 TITLES.update({
     "balance-sheets": "Two balance sheets and their sum",

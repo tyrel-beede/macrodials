@@ -9,7 +9,7 @@
 | Third-quarter revenue | $14.6B (+161% y/y) | $28.05B (flat y/y) | $42.7B |
 | Third-quarter operating income | $2.8B (adj. EBITDA $8.8B) | $0.72B (2.6% margin, −56% y/y) | $3.5B |
 | Third-quarter capex | $19.6B | $4.73B (nine months $13.0B) | $24.3B |
-| Capex guidance | Q4-26: $35–40B | 2026: "more than $25 billion" — at least ~$12B still to come in Q4 | Q4-26: ~$47–52B |
+| Capex guidance | Q4-26: $35–40B | 2026: cut in the 10-Q to "in excess of $20 billion" from the "more than $25 billion" held since April — about $7B still to come in Q4 | Q4-26: ~$42–47B |
 | Free cash flow | Negative through the build; self-funding claimed from 1H27 | $1.53B in Q3 (about −$1B underlying after working-capital timing, per Electrek's reading) | — |
 | Shares outstanding | 13.58B (Sept 30) | 3.95B (Oct 15) | Exchange ratio unknown |
 | Market capitalization, Nov 2 close | $1.87T at $137.40 | $1.60T at $403.82 | $3.46T — SpaceX 54%, Tesla 46% |
