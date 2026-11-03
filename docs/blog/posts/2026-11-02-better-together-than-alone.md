@@ -1,5 +1,7 @@
 ---
-date: 2026-11-02
+date:
+  created: 2026-11-02
+  updated: 2026-11-03
 categories:
   - Articles
 description: The physics, the money and the cycle behind a SpaceX–Tesla machine — a snapshot as of the Nov 2, 2026 close.
@@ -125,13 +127,17 @@ Start with what orbital power is worth. As the cascade section showed, electrici
 
 In orbit the binding constraint moves from power to heat. Every watt a chip consumes becomes a watt of heat, and in vacuum the only way to shed it is to radiate it. The Stefan–Boltzmann law sets the rate: a radiator at 300 kelvin (27°C) rejects about 410 watts per square meter per side, roughly 830 two-sided, before losses from Earth-shine; at 340 K, about 680 per side. Rejection scales with the fourth power of temperature, which is why "run the chips hot" is the lever — bounded by chip junction limits near 360 K and the temperature drop needed to move heat from chip to panel. A gigawatt of compute therefore needs between one and two and a half square kilometers of radiator, plus a comparable area of solar array. The rough baseline per megawatt:
 
-| Per megawatt in orbit | Area | Mass |
-| --- | --- | --- |
-| Solar array (\~350 W/m² delivered from 30%-efficient cells) | \~2,900 m² | 3–7 t |
-| Radiators (400–1,000 W/m² net rejection) | 1,000–2,500 m² | 3–20 t |
-| Compute hardware (about eight NVL72-class racks — Nvidia's 72-GPU rack, \~130 kW each — stripped of ground chassis) | — | 7–10 t |
-| Structure, power electronics, thermal loops | — | 5–10 t |
-| **Total** | **\~0.4–0.5 hectare (4,000–5,400 m²)** | **\~20–45 t** |
+[![Orbital compute: the physics baseline per megawatt](images/orbital-physics.png){ .tbl }](images/orbital-physics.png)
+<!-- subtitle: Stefan–Boltzmann at 300–340 K with emissivity 0.9; 1,361 W/m², 30% cells with 15% packing and degradation losses; NVL72-class racks of ~130 kW and ~1.4 t; Starship 150–200 t to low orbit. Order-of-magnitude baselines, not estimates for any vehicle. -->
+
+??? note "Text version (selectable)"
+    | Per megawatt in orbit | Area | Mass |
+    | --- | --- | --- |
+    | Solar array (\~350 W/m² delivered from 30%-efficient cells) | \~2,900 m² | 3–7 t |
+    | Radiators (400–1,000 W/m² net rejection) | 1,000–2,500 m² | 3–20 t |
+    | Compute hardware (about eight NVL72-class racks — Nvidia's 72-GPU rack, \~130 kW each — stripped of ground chassis) | — | 7–10 t |
+    | Structure, power electronics, thermal loops | — | 5–10 t |
+    | **Total** | **\~0.4–0.5 hectare (4,000–5,400 m²)** | **\~20–45 t** |
 
 At 150 to 200 tonnes to orbit, that is roughly three to ten megawatts per Starship — four to eight at the likely mass. The sheet's 10 MW per launch in 2027 is reachable with aggressive radiator and array mass, around 15 tonnes per megawatt; its 25 MW per launch in late 2028 requires 6–8 tonnes per megawatt, a three-to-five-fold improvement across arrays, radiators and structure at once. So the orbital line is not impossible; its most speculative cell is megawatts per launch, and that is where the engineering breakthroughs are quietly assumed. What *does* work in the arithmetic is the launch cost: at $50 million a flight and 10 MW, launch is about 12% of the hardware cost; at $10 million and 15 MW, about 2%. Starship's cost collapse is what makes orbital compute non-absurd; the T⁴ law is what bounds it.
 
@@ -205,22 +211,26 @@ Proven: the launch leg (90% of mass to orbit, a decade of cost leadership, the f
 
 The thesis is falsified, in the order the evidence would arrive, by a Starship cadence miss; by the funding window closing before self-funding (investment-grade spreads through 100 basis points, a credit event in the neocloud tier, a lab IPO that prices badly); by Grok losing the model race so the internal half of the fleet cannot pay; and by Terafab slipping past 2028, which would leave the cost claim resting on Nvidia's margins after all. It is confirmed by the mirror: a ship catch, 13 gigawatts with revenue per gigawatt holding above capex per gigawatt, the external share of the fleet staying near half, the Megapack bill paid, the special committees agreeing terms, and a first Starmind flight at eight to ten megawatts. The tests have dates:
 
-| When | Test | What it decides |
-| --- | --- | --- |
-| Nov 10, 2026 (after the close) | CoreWeave's third-quarter report | The neocloud tier's print: any customer renegotiation or deferral; its notes trade at 80–84 cents on the dollar |
-| Nov 12, 2026 (NET — no earlier than) | Starship Flight 15: first catch of both stages | The cadence that everything downstream depends on; the options market prices it as a non-event |
-| Nov 17, 2026 (after the close) | Nvidia's third-quarter report | The top supplier's first print since the tier's June top; the options market prices a move of about ±7% on it (Nov 2) |
-| Dec 3, 2026 | Tesla annual meeting (Giga Texas): Musk's re-election to the board; the special committees | No combination item is on the proxy; whether the committees say anything, and on what framing |
-| Dec 8, 2026 | Final 180-day lock-up release (\~798M shares) | Supply absorbed or not; the August precedent was a low, October's a 9% fall |
-| Dec 9–10, 2026 | Oracle's fiscal second-quarter report (Dec 10 by press accounts, unconfirmed); the Fed's decision (Dec 9) | The first Branch B element candidate at the principal tier; the rate backdrop for the bridge |
-| Dec 2026 | Year-end nameplate compute 2.5–3 GW; $100B annualized revenue | The 2026 promises, the cheapest to keep |
-| Late Jan 2027 (est.) | SpaceX and Tesla Q4 reports | SpaceX: the 2027 gigawatt guide (10 incremental), the external share, revenue per gigawatt; the Musk-group lock-up begins releasing. Tesla: the credit lines still undrawn or not, Q4 capex near $7B or below, Terafab spending on whose books, the $588M Megapack bill paid or not |
-| H1 2027 | Weekly Starship flights; self-funding begins | The two claims a year ahead of the bull's own model |
-| May–June 2027 | Terafab test chip in Austin | The silicon leg's first hardware |
-| 2027 | First Starmind flights | Megawatts per launch against a 4–8 MW physics baseline |
-| June 14, 2027 | Musk's own lock-up ends | The founder's own shares become sellable; the group's final tranche follows the Q2 2027 report |
-| End 2027 | 13 GW of compute; twice-weekly Starship; $500B–$1T annualized revenue (Musk) | The founder's numbers versus the bull's ($420B) |
-| 2028 | Terafab volume; Louisiana first launch (hoped for 2028, "highly likely" 2029); robotaxi cash flow; the orbital 2.8 GW | The next cycle's engines, if the bridge held |
+[![The tests have dates](images/dated-tests.png){ .tbl }](images/dated-tests.png)
+<!-- subtitle: The dated tests that confirm or falsify the thesis, in the order the evidence arrives. Times are U.S. market convention; 'NET' means no earlier than. -->
+
+??? note "Text version (selectable)"
+    | When | Test | What it decides |
+    | --- | --- | --- |
+    | Nov 10, 2026 (after the close) | CoreWeave's third-quarter report | The neocloud tier's print: any customer renegotiation or deferral; its notes trade at 80–84 cents on the dollar |
+    | Nov 12, 2026 (NET — no earlier than) | Starship Flight 15: first catch of both stages | The cadence that everything downstream depends on; the options market prices it as a non-event |
+    | Nov 17, 2026 (after the close) | Nvidia's third-quarter report | The top supplier's first print since the tier's June top; the options market prices a move of about ±7% on it (Nov 2) |
+    | Dec 3, 2026 | Tesla annual meeting (Giga Texas): Musk's re-election to the board; the special committees | No combination item is on the proxy; whether the committees say anything, and on what framing |
+    | Dec 8, 2026 | Final 180-day lock-up release (\~798M shares) | Supply absorbed or not; the August precedent was a low, October's a 9% fall |
+    | Dec 9–10, 2026 | Oracle's fiscal second-quarter report (Dec 10 by press accounts, unconfirmed); the Fed's decision (Dec 9) | The first Branch B element candidate at the principal tier; the rate backdrop for the bridge |
+    | Dec 2026 | Year-end nameplate compute 2.5–3 GW; $100B annualized revenue | The 2026 promises, the cheapest to keep |
+    | Late Jan 2027 (est.) | SpaceX and Tesla Q4 reports | SpaceX: the 2027 gigawatt guide (10 incremental), the external share, revenue per gigawatt; the Musk-group lock-up begins releasing. Tesla: the credit lines still undrawn or not, Q4 capex near $7B or below, Terafab spending on whose books, the $588M Megapack bill paid or not |
+    | H1 2027 | Weekly Starship flights; self-funding begins | The two claims a year ahead of the bull's own model |
+    | May–June 2027 | Terafab test chip in Austin | The silicon leg's first hardware |
+    | 2027 | First Starmind flights | Megawatts per launch against a 4–8 MW physics baseline |
+    | June 14, 2027 | Musk's own lock-up ends | The founder's own shares become sellable; the group's final tranche follows the Q2 2027 report |
+    | End 2027 | 13 GW of compute; twice-weekly Starship; $500B–$1T annualized revenue (Musk) | The founder's numbers versus the bull's ($420B) |
+    | 2028 | Terafab volume; Louisiana first launch (hoped for 2028, "highly likely" 2029); robotaxi cash flow; the orbital 2.8 GW | The next cycle's engines, if the bridge held |
 
 A reader who wants to follow the story needs only that table and three running numbers: gigawatts energized, revenue per gigawatt against capex per gigawatt, and the funding mix. As long as the first rises on schedule and the second stays well above one, the strategy is working; when the third shifts from cash flow and vendors toward new equity and long-term contracts, the bridge is under strain. Everything else in these pages is explanation of why those three numbers are the ones that matter.
 

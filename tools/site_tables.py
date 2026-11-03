@@ -7,7 +7,7 @@ recalculation) and writes
 Run by the site workflow before `mkdocs build`; safe to run locally (pip install openpyxl playwright;
 python -m playwright install chromium). Without Playwright the Markdown is still written and the images are skipped.
 """
-import html, pathlib, sys
+import html, pathlib, re, sys
 from openpyxl import load_workbook
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -154,12 +154,14 @@ def is_num(s):
         return False
 
 
-def render_png(name, rows, text_table=False):
+def render_png(name, rows, text_table=False, out=None, title=None, subtitle=None, footer=None):
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
         print("playwright not installed — skipping", name + ".png"); return
-    IMG.mkdir(parents=True, exist_ok=True)
+    out = out or (IMG / f"{name}.png"); out.parent.mkdir(parents=True, exist_ok=True)
+    title = title or TITLES.get(name, name); subtitle = subtitle or SUBTITLES.get(name, "")
+    footer = footer or FOOTERS.get(name, DEFAULT_FOOTER)
     head, body = rows[0], rows[1:]
     ncol = len(head)
     # a column is numeric when most of its non-empty cells are numbers; the unit column is column 1 of a data table
@@ -181,15 +183,15 @@ def render_png(name, rows, text_table=False):
             tds.append(f'<td class="{cls}">{html.escape(v)}</td>')
         trs.append("<tr>" + "".join(tds) + "</tr>")
     doc = f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
-<div class="card" id="card"><h1>{html.escape(TITLES[name])}</h1><p class="sub">{html.escape(SUBTITLES[name])}</p>
+<div class="card" id="card"><h1>{html.escape(title)}</h1><p class="sub">{html.escape(subtitle)}</p>
 <table><thead><tr>{ths}</tr></thead><tbody>{''.join(trs)}</tbody></table>
-<div class="foot"><span>{html.escape(FOOTERS.get(name, DEFAULT_FOOTER))}</span><span>{SITE}</span></div></div>
+<div class="foot"><span>{html.escape(footer)}</span><span>{SITE}</span></div></div>
 </body></html>"""
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 1600, "height": 1200}, device_scale_factor=2)
         pg.set_content(doc)
-        pg.locator("#card").screenshot(path=str(IMG / f"{name}.png"))
+        pg.locator("#card").screenshot(path=str(out))
         b.close()
 
 
@@ -234,6 +236,36 @@ def dump(ws, header_row, n_rows, cols, name):
     render_png(name.replace(".md", ""), [[v.replace("\\|", "|") for v in r] for r in rows])
 
 
+POST_RE = re.compile(
+    r'\[!\[(?P<alt>[^\]]*)\]\((?P<img>images/[A-Za-z0-9_\-]+\.png)\)\{ \.tbl \}\]\((?P=img)\)\n'
+    r'(?:<!-- subtitle: (?P<sub>.*?) -->\n)?'
+    r'\n\?\?\? note "Text version \(selectable\)"\n(?P<table>(?:    \|.*\n)+)')
+
+
+def unmark(s):
+    s = s.replace("\\~", "~").replace("\\|", "|").replace("**", "")
+    return s.strip()
+
+
+def process_posts():
+    """Each post may carry tables as an image link + a 'Text version' details block holding the Markdown
+    table; the table is the source and the PNG is rendered from it here."""
+    posts = sorted((ROOT / "docs" / "blog" / "posts").glob("*.md"))
+    for post in posts:
+        text = post.read_text(encoding="utf-8")
+        footer = "Source: the article as published on this site, Nov 2, 2026 snapshot. Not advice."
+        for m in POST_RE.finditer(text):
+            rows = []
+            for line in m.group("table").strip("\n").split("\n"):
+                cells = [unmark(c) for c in line.strip()[1:-1].split("|")]
+                if all(set(c) <= set("-: ") for c in cells):
+                    continue  # the separator row
+                rows.append(cells)
+            out = post.parent / m.group("img")
+            render_png(m.group("img"), rows, text_table=True, out=out, title=m.group("alt"), subtitle=m.group("sub") or "", footer=footer)
+            print("rendered", post.name, "->", m.group("img"))
+
+
 def main():
     if not XLSX.exists():
         sys.exit(f"missing {XLSX}")
@@ -247,6 +279,7 @@ def main():
     hv = find_row(v, "Metric")
     dump(v, hv, 5, range(1, 9), "valuation.md")
     write_static()
+    process_posts()
     print("wrote", sorted(p.name for p in OUT.glob("*.md")), sorted(p.name for p in IMG.glob("*.png")) if IMG.exists() else [])
 
 
