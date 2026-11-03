@@ -1,3 +1,10 @@
+---
+card: bull-case-2
+kicker: Models
+description: SpaceX Bull Case 2.0 — the bull's bottoms-up model rebuilt with the article's corrections; download the workbook or read its tables.
+card_foot: Nov 2, 2026 snapshot
+---
+
 # Models
 
 ## SpaceX Bull Case 2.0

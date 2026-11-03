@@ -9,6 +9,8 @@ on:
       - "docs/**"
       - "mkdocs.yml"
       - "tools/site_tables.py"
+      - "tools/social_cards.py"
+      - "overrides/**"
       - ".github/workflows/site.yml"
   workflow_dispatch: {}
 
@@ -35,6 +37,8 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Export the model's display tables from the workbook (Markdown and PNG)
         run: python tools/site_tables.py
+      - name: Render the social cards (Open Graph images)
+        run: python tools/social_cards.py
       - name: Build
         run: mkdocs build --strict
       - uses: actions/upload-pages-artifact@v3

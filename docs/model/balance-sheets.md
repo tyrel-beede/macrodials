@@ -1,3 +1,10 @@
+---
+card: balance-sheets
+kicker: Models · whose balance sheet
+description: Which company the numbers describe — SpaceX as reported, including xAI — and what Tesla's balance sheet adds, with the two Sept 30, 2026 balance sheets side by side.
+card_foot: Sept 30, 2026 filings
+---
+
 # Whose balance sheet? SpaceX, Tesla and the combination
 
 The article's title says the two companies may need each other; the workbook projects one of them. That gap is deliberate, but it leaves a fair question for anyone using the numbers: which version of the company is being projected — SpaceX as it reports, SpaceX with the programs the bull's sheet gives it, or the combined SpaceX–Tesla machine the thesis describes? This page answers that directly, then lays the two balance sheets side by side as they stood at Sept 30, 2026, adds them up, and says what a full combined model would need that the workbook does not have.

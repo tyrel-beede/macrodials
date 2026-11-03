@@ -16,6 +16,9 @@ date:
   updated: {updated}
 categories:
   - Articles
+card: better-together-than-alone
+kicker: Article · snapshot as of the Nov 2, 2026 close
+card_foot: Version {version} · {released_short}
 description: The physics, the money and the cycle behind a SpaceX–Tesla machine — a snapshot as of the Nov 2, 2026 close.
 ---
 
@@ -60,7 +63,7 @@ def main(src, dst, version="1.0", released="Nov 3, 2026, 11:40 MST", rev="196", 
                  f"<!-- subtitle: {sub} -->\n\n"
                  f'??? note "Text version (selectable)"\n{indented}\n')
         body = body[:a] + block + body[b:]
-    post = FRONT.format(updated=updated) + title + "\n\n" + body.rstrip("\n") + "\n\n" + STAMP.format(version=version, released=released, rev=rev, pdf=pdf)
+    post = FRONT.format(updated=updated, version=version, released_short=released.split(",")[0] + "," + released.split(",")[1]) + title + "\n\n" + body.rstrip("\n") + "\n\n" + STAMP.format(version=version, released=released, rev=rev, pdf=pdf)
     pathlib.Path(dst).write_text(post, encoding="utf-8")
     print("wrote", dst, len(post), "chars; tables converted:", len(TABLES))
 

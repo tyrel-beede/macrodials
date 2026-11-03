@@ -1,3 +1,10 @@
+---
+card: three-numbers
+kicker: Models · reading the workbook
+description: The company's numbers, the bull's and the model's — three kinds of statement, and what to expect from each before the first cell is changed.
+card_foot: Nov 2, 2026 snapshot
+---
+
 # Three sets of numbers: the company's, the bull's, and the model's
 
 Anyone who opens the Bull Case 2.0 workbook meets three different versions of SpaceX: the one management describes, the one the bull's spreadsheet models, and the one the workbook computes. They are not three forecasts of the same quantity. They are three kinds of statement, made by different people for different purposes, and a reader who treats them as interchangeable will be surprised in both directions — the company's numbers will look like the model has been built by a bear, and the model's numbers will look like the company is being dismissed. Neither is the case. This page sets out what each set is, where it comes from, what it is good for, and what to expect from it, so that the scenario selector on the Assumptions sheet makes sense before the first cell is changed.

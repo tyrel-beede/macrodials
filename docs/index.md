@@ -1,3 +1,7 @@
+---
+description: Long-form articles, the models behind them, and the data feed both are built from — a three-cycle read of where the debt, capital-spending and business cycles stand.
+---
+
 # Macro Dials
 
 Long-form articles, the models behind them, and the data feed that both are built from — a three-cycle read of where the debt, capital-spending and business cycles stand, written to be checkable.

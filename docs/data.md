@@ -1,3 +1,9 @@
+---
+card: data-feed
+kicker: The data feed
+description: What the repository pulls twice a day — rates, credit, prices, option surfaces, positioning, narrative — and how the dashboard reads it.
+---
+
 # The data feed
 
 The data lives in a separate repository, [tyrel-beede/fred_data_feed](https://github.com/tyrel-beede/fred_data_feed), which pulls the dashboard's inputs on a schedule with GitHub Actions and commits them as plain CSV and JSON under `data/`. Nothing is served from a database; the files are the record. This site holds the articles and the models; the feed stays where it is.

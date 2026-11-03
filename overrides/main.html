@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block extrahead %}
+  {% set card = page.meta.card if page.meta and page.meta.card else "default" %}
+  {% set desc = page.meta.description if page.meta and page.meta.description else config.site_description %}
+  {% set ptitle = page.title ~ " — " ~ config.site_name if page.title and not page.is_homepage else config.site_name %}
+  <meta property="og:type" content="{{ 'article' if page.meta and page.meta.card and 'blog/posts' in page.file.src_uri else 'website' }}">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ ptitle }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="{{ config.site_url }}assets/cards/{{ card }}.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ptitle }}">
+  <meta name="twitter:description" content="{{ desc }}">
+  <meta name="twitter:image" content="{{ config.site_url }}assets/cards/{{ card }}.png">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ 'assets/apple-touch-icon.png' | url }}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ 'assets/favicon-32.png' | url }}">
   <meta name="theme-color" content="#0f1b33">

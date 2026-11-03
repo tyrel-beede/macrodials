@@ -4,6 +4,9 @@ date:
   updated: 2026-11-03
 categories:
   - Articles
+card: better-together-than-alone
+kicker: Article · snapshot as of the Nov 2, 2026 close
+card_foot: Version 1.0 · Nov 3, 2026
 description: The physics, the money and the cycle behind a SpaceX–Tesla machine — a snapshot as of the Nov 2, 2026 close.
 ---
 
