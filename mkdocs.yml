@@ -58,6 +58,9 @@ markdown_extensions:
       base_path: ["docs"]
       check_paths: true
 
+extra_css:
+  - stylesheets/extra.css
+
 exclude_docs: |
   model/tables/
 
