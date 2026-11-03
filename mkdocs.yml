@@ -1,0 +1,68 @@
+site_name: Macro Dials
+site_description: Articles, models and the data feed behind the macro-dials dashboard
+site_url: https://tyrel-beede.github.io/macrodials/
+repo_url: https://github.com/tyrel-beede/macrodials
+repo_name: tyrel-beede/macrodials
+copyright: Analysis, not advice. Probabilities are the dashboard's or the market's, never a conviction.
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue grey
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Source Serif 4
+    code: JetBrains Mono
+
+plugins:
+  - search
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      post_date_format: long
+      post_url_format: "{date}/{slug}"
+      archive: true
+      categories: true
+      pagination_per_page: 10
+
+markdown_extensions:
+  - tables
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.snippets:
+      base_path: ["docs"]
+      check_paths: true
+
+exclude_docs: |
+  model/tables/
+
+nav:
+  - Home: index.md
+  - Articles: blog/index.md
+  - Models: model/index.md
+  - The data feed: data.md
