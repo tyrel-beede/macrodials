@@ -2,7 +2,7 @@
 
 Anyone who opens the Bull Case 2.0 workbook meets three different versions of SpaceX: the one management describes, the one the bull's spreadsheet models, and the one the workbook computes. They are not three forecasts of the same quantity. They are three kinds of statement, made by different people for different purposes, and a reader who treats them as interchangeable will be surprised in both directions — the company's numbers will look like the model has been built by a bear, and the model's numbers will look like the company is being dismissed. Neither is the case. This page sets out what each set is, where it comes from, what it is good for, and what to expect from it, so that the scenario selector on the Assumptions sheet makes sense before the first cell is changed.
 
-[![The same company, three sets of numbers](images/three-numbers.png)](images/three-numbers.png)
+[![The same company, three sets of numbers](images/three-numbers.png){ .tbl }](images/three-numbers.png)
 
 ??? note "Text version (selectable)"
     --8<-- "model/tables/three-numbers.md"
@@ -37,7 +37,7 @@ On those inputs the company earns $170 billion of revenue in 2027 and $324 billi
 
 Scenarios 3 and 4 are not pessimistic flourishes; they are the dashboard's other branches. In a capital-spending bust (B) prices fall to $4, the build slows, revenue is $107 billion and $147 billion, and the bridge never closes. In a credit crunch (C) the funding window shuts and the build throttles to a crawl; revenue is $91 billion and $103 billion, and the company "self-funds" only because it has stopped building.
 
-[![What kind of number each one is](images/provenance.png)](images/provenance.png)
+[![What kind of number each one is](images/provenance.png){ .tbl }](images/provenance.png)
 
 ??? note "Text version (selectable)"
     --8<-- "model/tables/provenance.md"
@@ -50,7 +50,7 @@ The three sets of numbers meet the market at one price. At the Nov 2 close of $1
 
 The expectation to carry into the spreadsheet is a spread, not a point. The company's numbers are the ceiling and contain an unstated price. The bull's sheet is a story-shaped version of the ceiling, more generous than it looks. The base case is what the same ambition delivers when the fleet is priced at market and depreciated honestly, and it still comes out as a large, fast-growing, self-funding company — just not the one in the headline figures. The gap between the top and the bottom is the size of the bet, and the article's phrase for it applies: it is the market's probability that the funding and pricing assumptions hold.
 
-[![The workbook's scenario selector, mapped to the three sets of numbers](images/scenarios.png)](images/scenarios.png)
+[![The workbook's scenario selector, mapped to the three sets of numbers](images/scenarios.png){ .tbl }](images/scenarios.png)
 
 ??? note "Text version (selectable)"
     --8<-- "model/tables/scenarios.md"

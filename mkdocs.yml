@@ -7,30 +7,37 @@ copyright: Analysis, not advice. Probabilities are the dashboard's or the market
 
 theme:
   name: material
+  icon:
+    logo: material/chart-timeline-variant
+    repo: fontawesome/brands/github
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.footer
     - search.suggest
     - search.highlight
     - content.code.copy
     - toc.follow
   palette:
-    - scheme: default
-      primary: blue grey
-      accent: deep orange
+    # follows the device setting, with a toggle to override it
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-night
         name: Switch to dark mode
-    - scheme: slate
-      primary: blue grey
-      accent: deep orange
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-sunny
         name: Switch to light mode
   font:
     text: Source Serif 4
-    code: JetBrains Mono
+    code: IBM Plex Mono
 
 plugins:
   - search

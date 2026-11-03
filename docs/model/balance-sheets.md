@@ -10,7 +10,7 @@ The bull's sheet is SpaceX too, with two additions the company has announced but
 
 Tesla enters the workbook in one place only: a toggle on the Assumptions sheet that lets about $75 billion of Tesla's liquidity — cash and investments plus the credit lines it signed in late September — fund SpaceX's bridge before any outside money is raised. It adds no Tesla revenue, capex, debt or shares. That is the "better together" case in its narrowest form, the balance-sheet form, which is the form the article argues is what Tesla brings.
 
-[![Which company each set of numbers describes](images/versions.png)](images/versions.png)
+[![Which company each set of numbers describes](images/versions.png){ .tbl }](images/versions.png)
 
 ??? note "Text version (selectable)"
     --8<-- "model/tables/versions.md"
@@ -35,7 +35,7 @@ Two lines tie the two balance sheets together already. Tesla bought $2.0 billion
 
 Added without adjustment, the combination at Sept 30 holds $135 billion of cash and investments and $30 billion of disclosed undrawn lines against $48 billion of debt and leases — net cash of $87 billion, nearer $47 billion once the Apollo lease is on the books — and earns $42.7 billion of quarterly revenue at $3.5 billion of operating income, while spending $24 billion a quarter on capex with $42–47 billion guided for the fourth. At Nov 2 prices the combined market value is about $3.46 trillion, 54% of it SpaceX and 46% Tesla.
 
-[![Two balance sheets and their sum](images/balance-sheets.png)](images/balance-sheets.png)
+[![Two balance sheets and their sum](images/balance-sheets.png){ .tbl }](images/balance-sheets.png)
 
 ??? note "Text version (selectable)"
     --8<-- "model/tables/balance-sheets.md"

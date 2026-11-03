@@ -1,23 +1,130 @@
-/* Wider layout for today's displays. Material's default grid is 61rem (~976 px), which leaves a narrow
-   centre column once the navigation and table-of-contents sidebars take their share. Change the one
-   number below to taste: 80rem ≈ 1280 px, 90rem ≈ 1440 px, 100rem ≈ 1600 px. */
-.md-grid {
-  max-width: 90rem;
+/* ------------------------------------------------------------------------------------------------
+   Macro Dials — theme overrides for Material for MkDocs.
+   Palette: "paper" (light) and "ink" (dark) built on Material's default/slate schemes so every derived
+   colour (code, admonitions, tables, search) stays consistent. Type: IBM Plex Sans for headings and
+   navigation, Source Serif 4 for reading, IBM Plex Mono for code and figures.
+   ------------------------------------------------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+/* ---------- colour: light ("paper") ---------- */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:        #0f1b33;   /* header, drawer: deep navy */
+  --md-primary-fg-color--light: #1e2d4d;
+  --md-primary-fg-color--dark:  #0a1226;
+  --md-primary-bg-color:        #f4f6fa;   /* text on navy */
+  --md-primary-bg-color--light: #c9d2e3;
+  --md-accent-fg-color:         #0b7a6f;   /* teal: links, focus, hover — 5.3:1 on the paper background */
+  --md-accent-fg-color--transparent: rgba(11, 122, 111, 0.10);
+  --md-accent-bg-color:         #ffffff;
+  --md-default-bg-color:        #f7f6f2;   /* warm paper */
+  --md-default-fg-color:        #1a1f2b;
+  --md-default-fg-color--light: #3b4252;
+  --md-default-fg-color--lighter: #6b7280;
+  --md-default-fg-color--lightest: #e5e3dc;
+  --md-typeset-a-color:         #0b7a6f;
+  --md-code-bg-color:           #ecebe5;
+  --md-code-fg-color:           #1f2a44;
+  --md-footer-bg-color:         #0f1b33;
+  --md-footer-bg-color--dark:   #0a1226;
+  --md-typeset-table-color:     rgba(26, 31, 43, 0.12);
+  --mdl-amber:                  #b7791f;   /* highlight: active tab, hero rule */
+  --mdl-surface:                #ffffff;
 }
 
-/* Keep the sidebars at their normal width so the extra room goes to the content column. */
+/* ---------- colour: dark ("ink") ---------- */
+[data-md-color-scheme="slate"] {
+  --md-hue: 222;
+  --md-primary-fg-color:        #0b1020;
+  --md-primary-fg-color--light: #16203a;
+  --md-primary-fg-color--dark:  #070b17;
+  --md-primary-bg-color:        #e6e8ee;
+  --md-primary-bg-color--light: #aeb6c7;
+  --md-accent-fg-color:         #3dd6c3;   /* teal, ~10:1 on the ink background */
+  --md-accent-fg-color--transparent: rgba(61, 214, 195, 0.12);
+  --md-default-bg-color:        #0b1020;   /* ink */
+  --md-default-fg-color:        #e6e8ee;
+  --md-default-fg-color--light: #c3c9d6;
+  --md-default-fg-color--lighter: #8b94a7;
+  --md-default-fg-color--lightest: #1c2540;
+  --md-typeset-a-color:         #3dd6c3;
+  --md-code-bg-color:           #121a2e;
+  --md-code-fg-color:           #d7dce8;
+  --md-footer-bg-color:         #070b17;
+  --md-footer-bg-color--dark:   #05080f;
+  --md-typeset-table-color:     rgba(230, 232, 238, 0.14);
+  --mdl-amber:                  #f2b544;
+  --mdl-surface:                #121a2e;
+}
+
+/* ---------- type ---------- */
+:root {
+  --mdl-heading-font: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4,
+.md-header, .md-tabs, .md-nav, .md-search, .md-footer, .md-typeset .md-button,
+.md-typeset details > summary, .md-typeset .admonition-title {
+  font-family: var(--mdl-heading-font);
+}
+.md-typeset h1 { font-weight: 600; letter-spacing: -0.02em; color: var(--md-default-fg-color); }
+.md-typeset h2 { font-weight: 600; letter-spacing: -0.015em; margin-top: 2.2em; }
+.md-typeset h3 { font-weight: 600; }
+.md-typeset h1::after {
+  content: ""; display: block; width: 3.5rem; height: 3px; margin-top: 0.6rem; background: var(--mdl-amber); border-radius: 2px;
+}
+.md-typeset { font-size: 0.85rem; line-height: 1.65; }
+.md-typeset code, .md-typeset pre, .md-typeset table:not([class]) td.num, .md-typeset kbd {
+  font-variant-numeric: tabular-nums;
+}
+.md-typeset table:not([class]) { font-size: 0.72rem; font-family: var(--mdl-heading-font); }
+.md-typeset table:not([class]) th { font-weight: 600; background: var(--mdl-surface); }
+.md-typeset table:not([class]) td, .md-typeset table:not([class]) th { font-variant-numeric: tabular-nums; }
+
+/* ---------- header, tabs, nav ---------- */
+.md-header { box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 12px rgba(0, 0, 0, 0.25); }
+.md-header__title { font-weight: 600; letter-spacing: -0.01em; }
+.md-tabs__link { font-weight: 500; opacity: 0.8; }
+.md-tabs__link--active, .md-tabs__link:hover { opacity: 1; }
+.md-tabs__item--active .md-tabs__link { box-shadow: inset 0 -2px 0 var(--mdl-amber); }
+.md-nav__link--active { color: var(--md-accent-fg-color); font-weight: 600; }
+.md-search__form { border-radius: 0.3rem; }
+
+/* ---------- buttons, details, admonitions ---------- */
+.md-typeset .md-button { border-radius: 0.3rem; border-width: 1.5px; }
+.md-typeset .md-button--primary { background: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); color: #fff; }
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary { color: #0b1020; }   /* dark text on the bright teal: 11:1 */
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover { color: #0b1020; }
+.md-typeset details { border-radius: 0.35rem; }
+.md-typeset .admonition, .md-typeset details { font-size: 0.74rem; }
+
+/* ---------- blog cards ---------- */
+.md-post__header, .md-post__meta { font-family: var(--mdl-heading-font); }
+.md-post--excerpt { padding: 1rem 1.1rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.5rem; background: var(--mdl-surface); margin-bottom: 1.2rem; }
+
+/* ---------- layout: wider centre column on large displays ---------- */
+.md-grid { max-width: 90rem; }
 @media screen and (min-width: 76.25em) {
-  .md-sidebar {
-    width: 13rem;
-  }
+  .md-sidebar { width: 13rem; }
 }
 
-/* A touch more type size so the longer lines stay comfortable to read. */
-.md-typeset {
-  font-size: 0.85rem;
+/* ---------- table images: readable on a phone ----------
+   Below 60em the table images would be shrunk to the screen width, so they are kept at a readable size and
+   the paragraph scrolls sideways instead; the full PNG still opens on tap. */
+.md-typeset img.tbl { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.4rem; background: #fff; }
+@media screen and (max-width: 59.9375em) {
+  .md-typeset p:has(> a > img.tbl) { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-left: -0.8rem; margin-right: -0.8rem; padding: 0 0.8rem; }
+  .md-typeset img.tbl { max-width: none; width: 960px; }
 }
 
-/* Let wide tables use the room instead of wrapping every header cell. */
-.md-typeset table:not([class]) {
-  font-size: 0.72rem;
+/* ---------- small screens: type and spacing ---------- */
+@media screen and (max-width: 44.9375em) {
+  .md-typeset { font-size: 0.82rem; line-height: 1.6; }
+  .md-typeset h1 { font-size: 1.55rem; }
+  .md-typeset h2 { font-size: 1.2rem; margin-top: 1.6em; }
+  .md-typeset .md-button { display: block; text-align: center; margin: 0.4rem 0; }
+}
+
+/* ---------- accessibility ---------- */
+:focus-visible { outline: 2px solid var(--mdl-amber); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
