@@ -5,7 +5,7 @@ Long-form articles, the models behind them, and the data feed that both are buil
 ## What is here
 
 - **[Articles](blog/index.md)** — the long-form pieces. The current one is *Better Together Than Alone*, a snapshot as of the Nov 2, 2026 close on the SpaceX–Tesla thesis: the physics, the money and the cycle.
-- **[Models](model/index.md)** — the spreadsheets. *SpaceX Bull Case 2.0* rebuilds the bull's bottoms-up model with the corrections the article identified; download the workbook or read its summary tables here.
+- **[Models](model/index.md)** — the spreadsheets. *SpaceX Bull Case 2.0* rebuilds the bull's bottoms-up model with the corrections the article identified; download the workbook or read its summary tables here, and start with [Three sets of numbers](model/three-numbers.md) to know what to expect from the company's figures, the bull's and the model's.
 - **[The data feed](data.md)** — what the repository pulls twice a day and how the dashboard reads it.
 
 ## How to read any of it

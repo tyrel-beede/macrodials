@@ -67,5 +67,7 @@ exclude_docs: |
 nav:
   - Home: index.md
   - Articles: blog/index.md
-  - Models: model/index.md
+  - Models:
+      - Bull Case 2.0: model/index.md
+      - Three sets of numbers: model/three-numbers.md
   - The data feed: data.md

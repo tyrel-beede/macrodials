@@ -37,11 +37,75 @@ table { border-collapse: collapse; font-size: 14px; }
 th { text-align: left; font-weight: 600; padding: 9px 14px; border-bottom: 2px solid #1f3864; background: #f3f5f8; vertical-align: bottom; }
 th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
 td { padding: 8px 14px; border-bottom: 1px solid #e3e7ec; vertical-align: top; }
-td.txt { max-width: 340px; }
+td.txt { max-width: 360px; }
+td.lab { white-space: nowrap; font-weight: 500; }
 tr:nth-child(even) td { background: #fafbfc; }
 td.unit, th.unit { color: #5f6b7a; white-space: nowrap; }
 .foot { font-size: 11.5px; color: #7a8591; margin-top: 12px; display: flex; justify-content: space-between; gap: 40px; }
 """
+
+# ---------------------------------------------------------------------------------------------
+# Static tables for the orientation page (docs/model/three-numbers.md). Values are quoted from the
+# Oct 20 call, Maguire's Oct 30 sheet as reconstructed in the article, and the workbook's defaults.
+# ---------------------------------------------------------------------------------------------
+STATIC = {
+    "three-numbers": [
+        ["Item", "The company (Oct 20 call)", "The bull — Maguire 1.0 (Oct 30)", "Model 2.0 base — Branch A (Nov 2)"],
+        ["Compute online, end-2027", "\"Surprised if less than 13 GW\"; 20 GW of power planned", "10.2 GW", "10.0 GW"],
+        ["Compute online, end-2028", "Not stated", "~22 GW implied by 2028 capex at $30B/GW", "15.0 GW — build throttled into the glut"],
+        ["Revenue run-rate, end-2027", "\"$500 billion to $1 trillion\"", "~$420B", "$255B"],
+        ["Revenue 2027 / 2028", "Q1-27 guided $33–37B; years not stated", "$274B / $731B", "$170B / $324B"],
+        ["Adjusted EBITDA 2027 / 2028", "Not stated", "$196B / $536B", "$134B / $263B"],
+        ["Capex", "Q4-26 guided $35–40B", "$88B / $290B / $369B (2026–28)", "Cash $264B / $187B in 2027–28, plus $86B / $45B of vendor leases"],
+        ["Cash generation", "Build \"starts funding itself\" in 1H27", "Cash −$78B / −$123B / +$115B", "Free cash flow −$63B / +$72B; self-funding Q4-27, by throttling"],
+        ["Price of compute", "Payback \"of less than a year\"", "$19.5B → $40B per GW-year on 100% of the fleet, then flat", "$6.50 → $11 → $8 per GPU-hour on the external half; Grok's revenue on the internal half"],
+        ["Cost to build a gigawatt", "\"Slightly above the $30–50 per watt range\"", "$45B → $30B, booked when capacity arrives", "$42B → $34B, half paid a quarter ahead; power capex separate"],
+        ["Internal vs external", "50/50 goal, 60/40 either way", "Not distinguished", "62% external today → 50%"],
+        ["GPU life", "—", "16 years implied by 2028 depreciation", "4 years, vintage-tracked"],
+        ["Orbital compute", "First Starmind flights 2027", "2.8 GW, $31B of revenue, 135 launches in 2028, no capex", "~0.5 GW by end-2028 with capex; MW per launch 8 → 12"],
+        ["Terafab", "Test chip mid-2027; volume Q3–Q4 2028, \"large error bars\"", "Revenue in 2028, no capex", "Capex from 2027; no revenue in the horizon"],
+        ["What $137.40 pays for 2028 EBITDA", "—", "3.4×", "7.6× (diluted)"],
+    ],
+    "provenance": [
+        ["", "The company's numbers", "The bull's numbers", "The model's numbers"],
+        ["Who and when", "Elon Musk, Gwynne Shotwell and CFO Bret Johnsen on the Q3 call, Oct 20, 2026, and the earnings release", "Shaun Maguire, partner at Sequoia Capital (a major SpaceX shareholder), posted to X on Oct 30, built over the preceding week", "The Bull Case 2.0 workbook, a Nov 2, 2026 snapshot built from the article's corrections to 1.0"],
+        ["What kind of statement", "Targets and guidance. The near ones (Q4 capex, Q1 revenue) are guidance a company is held to; the far ones (13 GW, $500B–$1T) are ambitions", "A sketch built for a story: management's claims discounted by a quarter to a half, written in cells so they can be debated", "Conditional arithmetic: four scenarios, each the consequence of stated inputs"],
+        ["Built for", "Investors and customers; setting the scale of the ambition", "Distilling \"something complicated into something that can at least be debated\"", "Orienting a reader on what the same ambition delivers when priced at market and depreciated honestly"],
+        ["Strongest where", "Things the company controls: deployment speed (200,000 chips a month), launch, the near-term guide", "The four inputs its author named: gigawatts, revenue and capex per gigawatt, the Starship ramp, first orbital launches", "Structure: the internal/external split, the lag and ramp, the funding bridge, the depreciation"],
+        ["Weakest where", "The far numbers require ~$16 per GPU-hour on the external fleet, 2.5× today's implied price, or a $100B-plus Grok business within 14 months", "100% of the fleet priced per watt with Grok on top; no construction lag; a 16-year GPU life; orbital and fab with no capex; launch with no depreciation", "Where it must guess: Grok's revenue, the prepayment multiple, the 2028 throttle, the external price path"],
+        ["What moves it", "The Q4 call in late January: the 2027 gigawatt guide, the external share, revenue per gigawatt", "Nothing — it is a dated artifact; its author said the outputs are \"trivial\" given the inputs", "The blue cells on Assumptions; the dated tests on the Tests sheet"],
+        ["Where it lives in the workbook", "Scenario 1 (Management as stated) and the calculator on Summary", "The 1.0 columns on Summary and Valuation; the Bridge sheet", "Scenarios 2–4 and every model sheet"],
+    ],
+    "scenarios": [
+        ["Workbook scenario", "What it represents", "GW end-2027 / end-2028", "External price ($/GPU-hour)", "Revenue 2027 / 2028", "Self-funding", "Market cap ÷ 2028 EBITDA"],
+        ["1 Management as stated", "The company's words reproduced: the price and prepayments the $500B run-rate requires", "13.1 / 29.8", "$10 → $16 → $15", "$254B / $742B", "Q4-27", "2.8×"],
+        ["2 Bull 2.0 base (Branch A)", "The bull after the corrections; the dashboard's expansion-holds branch", "10.0 / 15.0", "$6.50 → $11 → $8", "$170B / $324B", "Q4-27 (by throttling)", "7.6×"],
+        ["3 Branch B", "A capital-spending bust from 2027: prices fall, the build slows, the bridge stays open", "7.3 / 9.4", "$6.50 → $5.50 → $4", "$107B / $147B", "Not in the horizon", "19.0×"],
+        ["4 Branch C", "A credit crunch: the funding window closes, the build throttles to a crawl", "5.3 / 6.3", "$6.50 → $4.50 → $3", "$91B / $103B", "Q4-27 (forced)", "27.4×"],
+        ["Reference: Maguire 1.0", "The bull's own sheet, as reconstructed in the article", "10.2 / ~22", "$8.40 at 100% utilization on 100% of the fleet", "$274B / $731B", "Q1 2028", "3.4×"],
+    ],
+}
+TITLES.update({
+    "three-numbers": "The same company, three sets of numbers",
+    "provenance": "What kind of number each one is",
+    "scenarios": "The workbook's scenario selector, mapped to the three sets of numbers",
+})
+SUBTITLES.update({
+    "three-numbers": "Company: Q3 2026 call and release (Oct 20). Bull: Maguire's Oct 30 model as reconstructed in \"Better Together Than Alone\". Model 2.0: the workbook's Branch A defaults, Nov 2, 2026 snapshot",
+    "provenance": "Three kinds of statement, not three forecasts of the same thing",
+    "scenarios": "Assumptions sheet, cell D4. Prices are the external fleet's $ per GPU-hour at Q4-26 → Q4-27 → Q4-28; market cap at the Nov 2 close ($137.40 × 13.58B) on end-2028 diluted shares",
+})
+
+
+def write_static():
+    OUT.mkdir(parents=True, exist_ok=True)
+    for name, rows in STATIC.items():
+        with open(OUT / f"{name}.md", "w", encoding="utf-8") as f:
+            f.write("| " + " | ".join(rows[0]) + " |\n")
+            f.write("| " + " | ".join("---" for _ in rows[0]) + " |\n")
+            for vals in rows[1:]:
+                f.write("| " + " | ".join(v.replace("|", "\\|") for v in vals) + " |\n")
+        render_png(name, rows, text_table=True)
 
 
 def is_num(s):
@@ -52,19 +116,30 @@ def is_num(s):
         return False
 
 
-def render_png(name, rows):
+def render_png(name, rows, text_table=False):
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
         print("playwright not installed — skipping", name + ".png"); return
     IMG.mkdir(parents=True, exist_ok=True)
     head, body = rows[0], rows[1:]
-    ths = "".join(f'<th class="{"unit" if i == 1 else ("num" if i >= 2 else "")}">{html.escape(h)}</th>' for i, h in enumerate(head))
+    ncol = len(head)
+    # a column is numeric when most of its non-empty cells are numbers; the unit column is column 1 of a data table
+    numeric = []
+    for i in range(ncol):
+        vals = [r[i] for r in body if r[i] != ""]
+        numeric.append(bool(vals) and sum(is_num(v) for v in vals) >= 0.6 * len(vals) and not (text_table and i == 0))
+    def hcls(i):
+        if not text_table and i == 1: return "unit"
+        return "num" if numeric[i] else ""
+    ths = "".join(f'<th class="{hcls(i)}">{html.escape(h)}</th>' for i, h in enumerate(head))
     trs = []
     for r in body:
         tds = []
         for i, v in enumerate(r):
-            cls = "unit" if i == 1 else ("num" if (i >= 2 and (is_num(v) or v == "")) else "txt")
+            if not text_table and i == 1: cls = "unit"
+            elif numeric[i] and (is_num(v) or v == ""): cls = "num"
+            else: cls = "txt" if i > 0 else "lab"
             tds.append(f'<td class="{cls}">{html.escape(v)}</td>')
         trs.append("<tr>" + "".join(tds) + "</tr>")
     doc = f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
@@ -133,6 +208,7 @@ def main():
     v = wb["Valuation"]
     hv = find_row(v, "Metric")
     dump(v, hv, 5, range(1, 9), "valuation.md")
+    write_static()
     print("wrote", sorted(p.name for p in OUT.glob("*.md")), sorted(p.name for p in IMG.glob("*.png")) if IMG.exists() else [])
 
 
