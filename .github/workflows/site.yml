@@ -30,8 +30,10 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install
-        run: pip install "mkdocs-material>=9.7,<10" openpyxl
-      - name: Export the model's display tables from the workbook
+        run: |
+          pip install "mkdocs-material>=9.7,<10" openpyxl playwright
+          python -m playwright install --with-deps chromium
+      - name: Export the model's display tables from the workbook (Markdown and PNG)
         run: python tools/site_tables.py
       - name: Build
         run: mkdocs build --strict
