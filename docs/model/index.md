@@ -6,6 +6,7 @@ A bottoms-up quarterly model of SpaceX from Q3-26 (actual) through Q4-28, rebuil
 
 [Download the workbook (.xlsx)](../files/SpaceX_Bull_Case_2.0.xlsx){ .md-button .md-button--primary }
 [Three sets of numbers: how to read it](three-numbers.md){ .md-button }
+[Whose balance sheet: SpaceX, Tesla and the combination](balance-sheets.md){ .md-button }
 
 Every number in the workbook is an input (blue) or the arithmetic of inputs. The scenario selector on the Assumptions sheet switches the whole model between **1 Management as stated**, **2 Bull 2.0 base (Branch A)**, **3 Branch B** (capex bust) and **4 Branch C** (credit crunch) — the dashboard's branches. The tables below are exported from the saved workbook each time the site builds, so they show the workbook's active scenario (Bull 2.0 base) and its static four-scenario snapshot. Each is an image — click it for the full-size PNG, which can be saved, copied or linked directly — with a selectable text version underneath.
 

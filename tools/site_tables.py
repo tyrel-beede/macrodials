@@ -28,6 +28,14 @@ SUBTITLES = {
     "valuation": "Method 1: a multiple on 2028 EBITDA, diluted for the bridge (end-2028, undiscounted). Method 2: DCF of the model's cash flows plus a steady-state terminal value at 10% / 4%",
 }
 
+DEFAULT_FOOTER = f"Source: SpaceX Bull Case 2.0 workbook ({SNAPSHOT}) — every number is an input or the arithmetic of inputs; not advice."
+FOOTERS = {
+    "balance-sheets": "Sources: SpaceX Q3 2026 release and Oct 20 call; Tesla Form 10-Q for the quarter ended Sept 30, 2026 and Q3 update; Electrek; Nov 2 closes from the data repository. Not advice.",
+    "versions": "Sources: the Oct 20 call; Maguire's Oct 30 model as reconstructed in the article; the Bull Case 2.0 workbook; Tesla's Q3 2026 10-Q. Not advice.",
+    "three-numbers": "Sources: the Oct 20 call and release; Maguire's Oct 30 model as reconstructed in the article; the Bull Case 2.0 workbook (Nov 2, 2026 snapshot). Not advice.",
+    "provenance": "Sources: the Oct 20 call; Maguire's X posts of Oct 30 and Nov 1 as quoted in the article; the Bull Case 2.0 workbook. Not advice.",
+}
+
 CSS = """
 body { margin: 0; background: #ffffff; font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2933; }
 .card { display: inline-block; padding: 28px 32px 22px 32px; }
@@ -85,12 +93,42 @@ STATIC = {
         ["Reference: Maguire 1.0", "The bull's own sheet, as reconstructed in the article", "10.2 / ~22", "$8.40 at 100% utilization on 100% of the fleet", "$274B / $731B", "Q1 2028", "3.4×"],
     ],
 }
+STATIC["balance-sheets"] = [
+    ["Sept 30, 2026 unless noted", "SpaceX", "Tesla", "Combined (additive, illustrative)"],
+    ["Cash and investments", "$89.9B cash and marketable securities", "$45.4B ($17.9B cash, $27.6B short-term investments)", "$135.3B"],
+    ["Undrawn credit lines", "Not disclosed; \"several debt pools available\" (CFO)", "~$30B: $8B and $2B revolvers plus a delayed-draw term loan with step-downs and an 18-month draw window (signed Sept 29)", "~$30B disclosed"],
+    ["Debt and finance leases", "$38.8B", "$9.5B ($1.4B current, $8.1B non-current)", "$48.3B"],
+    ["Net cash", "$51.1B", "$35.9B", "$87.0B"],
+    ["Known changes after quarter-end", "$40B GPU purchase restructured as an Apollo finance lease (Oct 26) — a lease liability of that order to come", "—", "Net cash nearer $47B once the lease is on the books"],
+    ["Customer money in hand", "$17.5B of deferred revenue inside a $63B backlog ($42B due within a year)", "$3.3B of energy deferred revenue", "$20.8B"],
+    ["Third-quarter revenue", "$14.6B (+161% y/y)", "$28.05B (flat y/y)", "$42.7B"],
+    ["Third-quarter operating income", "$2.8B (adj. EBITDA $8.8B)", "$0.72B (2.6% margin, −56% y/y)", "$3.5B"],
+    ["Third-quarter capex", "$19.6B", "$4.73B (nine months $13.0B)", "$24.3B"],
+    ["Capex guidance", "Q4-26: $35–40B", "2026: \"more than $25 billion\" — at least ~$12B still to come in Q4", "Q4-26: ~$47–52B"],
+    ["Free cash flow", "Negative through the build; self-funding claimed from 1H27", "$1.53B in Q3 (about −$1B underlying after working-capital timing, per Electrek's reading)", "—"],
+    ["Shares outstanding", "13.58B (Sept 30)", "3.95B (Oct 15)", "Exchange ratio unknown"],
+    ["Market capitalization, Nov 2 close", "$1.87T at $137.40", "$1.60T at $403.82", "$3.46T — SpaceX 54%, Tesla 46%"],
+    ["Cross-holdings and intercompany", "Alphabet holds 551M shares (~4%); Tesla holds the stake at right", "$2.0B of SpaceX stock bought in Q1 at fair value (+$863M over nine months, −$142M in Q3); $588M billed to SpaceX for undelivered Megapacks, sitting in receivables and deferred revenue (per Electrek)", "Eliminated on combination"],
+    ["Compute and silicon", "1.7 GW nameplate (2.5–3 by year-end); Terafab test chip mid-2027", "Cortex training clusters (>105 and 120 MW in production, 400 MW planned); AI5 chip; the fab partner", "Whose books Terafab sits on is one of the tests"],
+]
+STATIC["versions"] = [
+    ["Set of numbers", "Entities included", "Revenue projected", "Capex and balance sheet", "Where in the workbook"],
+    ["The company's guidance (Oct 20)", "SpaceX consolidated: Space, Connectivity, Super Intelligence (xAI since Feb 2026, X, Cursor). Tesla not included", "SpaceX's three segments only — the Q1-27 guide and the $500B–$1T run-rate are SpaceX numbers", "SpaceX's: $89.9B cash, $38.8B debt, Q4 capex $35–40B", "Scenario 1"],
+    ["The bull's sheet (Maguire 1.0)", "SpaceX, plus orbital compute and a chip fab as revenue lines. Tesla absent", "SpaceX plus $31B of orbital revenue and fab revenue in 2028", "SpaceX's, with no capex for orbital or the fab", "Reference columns on Summary and Valuation; the Bridge sheet"],
+    ["Model 2.0 (scenarios 2–4)", "SpaceX as reported, with Terafab and Starmind as capex programs. Tesla absent", "SpaceX's three segments; no Tesla revenue", "SpaceX's, with leases, prepayments, debt and equity in the bridge", "Compute, Starlink, Launch, Consolidated"],
+    ["Model 2.0 with the Tesla toggle on", "As above, plus Tesla's liquidity as a funding source", "Unchanged — no Tesla revenue", "Adds ~$75B of Tesla cash and lines to the bridge; no Tesla capex, debt or shares", "Assumptions › Combination toggle; Consolidated › Tesla pool"],
+    ["A combined SpaceX–Tesla company (the article's thesis)", "Both companies, with eliminations", "Adds Tesla's ~$112B run-rate at a 2–3% operating margin, and the robotaxi program", "Adds $45B cash, $30B of lines, $9.5B debt, >$25B a year of capex, and 3.95B shares at an exchange ratio the special committees would set", "Not modeled — see the page for what a full version needs"],
+]
 TITLES.update({
+    "balance-sheets": "Two balance sheets and their sum",
+    "versions": "Which company each set of numbers describes",
     "three-numbers": "The same company, three sets of numbers",
     "provenance": "What kind of number each one is",
     "scenarios": "The workbook's scenario selector, mapped to the three sets of numbers",
 })
 SUBTITLES.update({
+    "balance-sheets": "SpaceX: Q3 2026 release and Oct 20 call. Tesla: Form 10-Q for the quarter ended Sept 30, 2026 (filed Oct 21) and the Q3 update; Electrek for the working-capital and Megapack readings. Combined column is a plain sum with no synergies, no deal premium and no accounting for the exchange ratio",
+    "versions": "All revenue projections on this site are SpaceX-only, including xAI; Tesla enters the workbook as money, not as revenue",
     "three-numbers": "Company: Q3 2026 call and release (Oct 20). Bull: Maguire's Oct 30 model as reconstructed in \"Better Together Than Alone\". Model 2.0: the workbook's Branch A defaults, Nov 2, 2026 snapshot",
     "provenance": "Three kinds of statement, not three forecasts of the same thing",
     "scenarios": "Assumptions sheet, cell D4. Prices are the external fleet's $ per GPU-hour at Q4-26 → Q4-27 → Q4-28; market cap at the Nov 2 close ($137.40 × 13.58B) on end-2028 diluted shares",
@@ -145,7 +183,7 @@ def render_png(name, rows, text_table=False):
     doc = f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
 <div class="card" id="card"><h1>{html.escape(TITLES[name])}</h1><p class="sub">{html.escape(SUBTITLES[name])}</p>
 <table><thead><tr>{ths}</tr></thead><tbody>{''.join(trs)}</tbody></table>
-<div class="foot"><span>Source: SpaceX Bull Case 2.0 workbook ({SNAPSHOT}) — every number is an input or the arithmetic of inputs; not advice.</span><span>{SITE}</span></div></div>
+<div class="foot"><span>{html.escape(FOOTERS.get(name, DEFAULT_FOOTER))}</span><span>{SITE}</span></div></div>
 </body></html>"""
     with sync_playwright() as p:
         b = p.chromium.launch()
