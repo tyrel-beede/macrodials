@@ -89,10 +89,27 @@
 .md-search__form { border-radius: 0.3rem; }
 
 /* ---------- buttons, details, admonitions ---------- */
-.md-typeset .md-button { border-radius: 0.3rem; border-width: 1.5px; }
+/* Material draws a plain .md-button in the *primary* colour; our primary is near-black in both schemes (ink on
+   ink in dark mode), so every button is restated on the accent teal — outline for secondary, filled for primary. */
+.md-typeset .md-button { border-radius: 0.3rem; border-width: 1.5px; color: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); background: transparent; }
+.md-typeset .md-button:hover, .md-typeset .md-button:focus { background: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); color: #fff; }
 .md-typeset .md-button--primary { background: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); color: #fff; }
-[data-md-color-scheme="slate"] .md-typeset .md-button--primary { color: #0b1020; }   /* dark text on the bright teal: 11:1 */
-[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover { color: #0b1020; }
+.md-typeset .md-button--primary:hover, .md-typeset .md-button--primary:focus { background: var(--md-accent-fg-color--dark, #095f57); border-color: var(--md-accent-fg-color--dark, #095f57); color: #fff; }
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary,
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover,
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:focus,
+[data-md-color-scheme="slate"] .md-typeset .md-button:hover,
+[data-md-color-scheme="slate"] .md-typeset .md-button:focus { color: #0b1020; }   /* dark text on the bright teal: 11:1 */
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover,
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:focus { background: #6fe3d4; border-color: #6fe3d4; }
+
+/* A stack of button links, one per row, equal width, so a set of actions reads as a list rather than a
+   wrapping line. Usage: <div class="button-rows" markdown> … one [link]{ .md-button } per line … </div> */
+.md-typeset .button-rows { display: grid; grid-template-columns: minmax(0, 32rem); gap: 0.55rem; margin: 1.2rem 0 1.8rem; }
+.md-typeset .button-rows > p { margin: 0; }
+.md-typeset .button-rows .md-button { display: flex; align-items: center; justify-content: space-between; gap: 1em; margin: 0; text-align: left; padding: 0.55em 1.1em; }
+.md-typeset .button-rows .md-button::after { content: "→"; flex: none; opacity: 0.8; }
+.md-typeset .button-rows .md-button--primary::after { content: "↓"; }
 .md-typeset details { border-radius: 0.35rem; }
 .md-typeset .admonition, .md-typeset details { font-size: 0.74rem; }
 

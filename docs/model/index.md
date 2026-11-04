@@ -11,9 +11,15 @@ card_foot: Nov 2, 2026 snapshot
 
 A bottoms-up quarterly model of SpaceX from Q3-26 (actual) through Q4-28, rebuilt after *Better Together Than Alone* with the corrections the article identified: the internal half of the fleet earns Grok's product revenue rather than a per-watt price; external revenue is price per GPU-hour × hours × utilization; cost per gigawatt sits on the CFO's "$30–50 per watt"; GPUs depreciate over four years; orbital compute and the fab carry capex; Starlink and launch are real segments; and a funding bridge of prepayments, vendor leases, debt and equity computes the self-funding quarter instead of assuming it.
 
+<div class="button-rows" markdown>
+
 [Download the workbook (.xlsx)](../files/SpaceX_Bull_Case_2.0.xlsx){ .md-button .md-button--primary }
+
 [Three sets of numbers: how to read it](three-numbers.md){ .md-button }
+
 [Whose balance sheet: SpaceX, Tesla and the combination](balance-sheets.md){ .md-button }
+
+</div>
 
 Every number in the workbook is an input (blue) or the arithmetic of inputs. The scenario selector on the Assumptions sheet switches the whole model between **1 Management as stated**, **2 Bull 2.0 base (Branch A)**, **3 Branch B** (capex bust) and **4 Branch C** (credit crunch) — the dashboard's branches. The tables below are exported from the saved workbook each time the site builds, so they show the workbook's active scenario (Bull 2.0 base) and its static four-scenario snapshot. Each is an image — click it for the full-size PNG, which can be saved, copied or linked directly — with a selectable text version underneath.
 
