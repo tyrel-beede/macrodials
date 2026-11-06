@@ -80,4 +80,5 @@ nav:
       - Bull Case 2.0: model/index.md
       - Three sets of numbers: model/three-numbers.md
       - Whose balance sheet: model/balance-sheets.md
+  - Forecasts: forecasts/index.md
   - The data feed: data.md

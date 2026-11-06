@@ -9,10 +9,14 @@ on:
       - "docs/**"
       - "mkdocs.yml"
       - "tools/site_tables.py"
+      - "tools/forecasts.py"
       - "tools/social_cards.py"
       - "overrides/**"
       - ".github/workflows/site.yml"
   workflow_dispatch: {}
+  schedule:
+    # Rebuild the Forecasts section after the Saturday dials-weekly sequence (06:10 MT) has committed its runs
+    - cron: "30 15 * * 6"
 
 permissions:
   contents: read
@@ -33,10 +37,12 @@ jobs:
           python-version: "3.12"
       - name: Install
         run: |
-          pip install "mkdocs-material>=9.7,<10" openpyxl playwright
+          pip install "mkdocs-material>=9.7,<10" openpyxl playwright matplotlib
           python -m playwright install --with-deps chromium
       - name: Export the model's display tables from the workbook (Markdown and PNG)
         run: python tools/site_tables.py
+      - name: Build the Forecasts section from the data repository state
+        run: python tools/forecasts.py
       - name: Render the social cards (Open Graph images)
         run: python tools/social_cards.py
       - name: Build

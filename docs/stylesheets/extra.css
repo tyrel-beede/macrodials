@@ -152,3 +152,9 @@
   font-family: var(--mdl-heading-font); font-size: 0.66rem; color: var(--md-default-fg-color--lighter); letter-spacing: 0.01em;
 }
 .md-typeset .release-stamp a { color: var(--md-default-fg-color--light); }
+
+/* Forecasts page charts: one image per color scheme (#only-light / #only-dark), full width, with a caption */
+.md-typeset img.chart { display: block; width: 100%; max-width: 56rem; border: 1px solid var(--md-default-fg-color--lightest); border-radius: 0.4rem; }
+.md-typeset .chart-sub { font-size: 0.72rem; color: var(--md-default-fg-color--light); margin: 0.3rem 0 1.4rem 0; max-width: 56rem; }
+[data-md-color-scheme="default"] img[src$="#only-dark"],
+[data-md-color-scheme="slate"]   img[src$="#only-light"] { display: none; }
